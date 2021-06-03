@@ -12,7 +12,7 @@ def timer_setting():
         # print('now_time=')
         # print(now_time)
         #在这里设置抢的时间，离抢的时间最好留个一分钟以上
-        date_time = datetime.datetime.strptime("2020"+"-"+"12"+"-"+"13"+" 12:00:00", "%Y-%m-%d %H:%M:%S")
+        date_time = datetime.datetime.strptime("2021"+"-"+"3"+"-"+"13"+" 12:00:00", "%Y-%m-%d %H:%M:%S")
         # print('date_time=')
         # print(date_time)
         wait_time = (date_time - now_time).total_seconds()

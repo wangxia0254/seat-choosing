@@ -94,9 +94,10 @@ def decode_verify(method='book'):
 			print('动态验证码破解成功：',decode_verity)
 			return decode_verity
 		except:
-			time.sleep(0.1)
+			#time.sleep(0.1)
 			continue
-	print('动态验证码破解失败，请重试或手动订座');exit()
+	print('动态验证码破解失败，请重试或手动订座');
+	#exit()
 
 def booking_today(lib_id,seat_key):
 	seat_time = 0
@@ -138,7 +139,8 @@ def booking_tomorrow(lib_id,seat_key):
 		function.myWork(url.pageBook(lib_id,seat_key,decode_verify('prebook'),yzm_ocr(),method='prebook'),browerConfig.initBook(lib_id)).json()
 	else:
 		print(result['msg'])
-		exit()
+		booking_tomorrow(lib_id,seat_key)
+		#exit()
 	feedback_pre()
 
 def feedback_pre():
@@ -163,7 +165,7 @@ if __name__ == "__main__":
 	print('欢迎使用来选座')
 	print('=========================================\n开始执行\n=========================================\n')
 	your_seats = []
-	session = 'xxxxxx'
+	session = 'b568995d0bf1c7f0d2ef58e365e55c01'
 	#session通过手机登录来选座抓包得到wechatSESS_ID，再copy过来，注意每天的wechatSESS_ID值会变化
 	# 基本信息
 	while True:
@@ -177,19 +179,19 @@ if __name__ == "__main__":
 
 			judge_session()
 			personal_information()
-			usual_seat_information()  #设置常用座位后，自动抢常用座位
-			# your_seats.append(['10134', '7,9', '卫津路校区 404 16号'])
-			# your_seats.append(['10133', '11,13', '卫津路校区 402 4号'])
+			# usual_seat_information()  #设置常用座位后，自动抢常用座位
+			your_seats.append(['10134', '7,9', '卫津路校区 404 16号'])
+			your_seats.append(['10133', '11,13', '卫津路校区 402 4号'])
 		    # 已知id和座位号之后可以赋值在这里，这是我的两个常用座位麻烦换一个座位抢免得冲突了哈哈
 
 			#print(your_seats)
 		# 开始抢座
 		elif (timer.timer_setting() == 2):
 			#这里要预约和要抢今天的就把相应的语句取消注释
-			# print('开始预定明天座位', your_seats[0][2])
-			# booking_tomorrow(your_seats[0][0], your_seats[0][1])
-			print('开始选择今天座位', your_seats[0][2])
-			booking_today(your_seats[0][0], your_seats[0][1])
+			print('开始预定明天座位', your_seats[0][2])
+			booking_tomorrow(your_seats[0][0], your_seats[0][1])
+			# print('开始选择今天座位', your_seats[0][2])
+			# booking_today(your_seats[0][0], your_seats[0][1])
 		else:#以下没啥用
 			print('开始选择今天座位', your_seats[0][2])
 			print(your_seats[0][0])
